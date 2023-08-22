@@ -1,10 +1,35 @@
 import React from "react";
-export const Headers=()=>{
+import { useState } from 'react';
+export const Headers=({
+    allProducts,
+    setAllProducts,
+    total,
+    countProducts,
+    setCountProducts,
+    setTotal,
+    
+})=>{
+    const [active, setActive] = useState(false);
+    const onDeleteProduct = product => {
+    const results = allProducts.filter(
+    item => item.id !== product.id
+    );
+    setTotal(total - product.price * product.quantity);
+    setCountProducts(countProducts - product.quantity);
+    setAllProducts(results);
+    };
+    const onCleanCart = () => {
+        setAllProducts([]);
+        setTotal(0);
+        setCountProducts(0);
+};
+        
+
 return (
 <header>
     <h1>Tienda de Libros</h1>
     <div className="container-icon">
-        <div className="container-cart-icon">
+        <div className="container-cart-icon" onClick={() => setActive(!active)}>
             <img src="https://e7.pngegg.com/pngimages/833/426/png-clipart-black-shopping-cart-icon-for-free-black-shopping-cart.png" alt="carrito" className="icon-cart" />
                 <div className="count-products">
                     <span id="contador-productos">0</span>
