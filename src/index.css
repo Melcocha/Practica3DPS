@@ -200,3 +200,9 @@ header{
 .hidden{
     display: none;
 }
+.product-image-in-cart {
+    width: 50px; /* Ajusta como necesites */
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px; /* Espacio entre la imagen y el título del producto */
+}
